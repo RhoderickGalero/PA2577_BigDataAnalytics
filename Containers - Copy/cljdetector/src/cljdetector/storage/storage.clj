@@ -145,10 +145,7 @@
         anonymous-clone (select-keys clone [:numberOfInstances :instances])]
     (mc/insert db collname anonymous-clone)))
 
-(defn add-update! [timestamp message]
-  (let [conn (mg/connect {:host hostname})
-        db (mg/get-db conn dbname)
+(defn add-update! [conn message]
+  (let [db (mg/get-db conn dbname)
         collname "statusUpdates"]
-    (mc/insert db collname {:timestamp timestamp :message message})))
-
-
+    (mc/insert db collname {:timestamp (java.time.LocalDateTime/now) :message message})))

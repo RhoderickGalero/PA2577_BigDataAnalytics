@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'monitortool'
+    static_configs:
+      - targets: ['monitortool:9091']  # Replace with the actual port used by your MonitorTool
