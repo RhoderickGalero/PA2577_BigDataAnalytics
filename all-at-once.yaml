@@ -28,7 +28,23 @@ services:
     volumes:
       - dbstorage:/data/db
       - dbconfig:/data/configdb
-    
+
+  monitortool:
+    build: ./Containers/monitortool
+    volumes:
+      - ./Containers/monitortool:/app
+    depends_on:
+      - dbstorage
+
+  webapp:
+    build: ./Containers/webapp
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./Containers/webapp:/app
+    depends_on:
+      - monitortool
+
 volumes:
   dbstorage:
   dbconfig:
