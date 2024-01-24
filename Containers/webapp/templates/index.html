@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monitor Tool Statistics</title>
+</head>
+<body>
+    <h1>Processing Statistics</h1>
+    <!-- Display your statistics here -->
+    {% for stat in statistics %}
+        <div>
+            <h2>Timestamp: {{ stat['timestamp'] }}</h2>
+            {% for key, value in stat['counts'].items() %}
+                <p>{{ key }}: {{ value }}</p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</body>
+</html>
